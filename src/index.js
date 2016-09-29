@@ -44,6 +44,4 @@ app.post('/commands/starbot', (req, res) => {
 
 app.listen(config('PORT'), (err) => {
   if (err) throw err
-
-  console.log(`\n🚀  Starbot LIVES on PORT ${config('PORT')} 🚀`)
 })
