@@ -1,6 +1,8 @@
 
 'use strict'
 
+require('newrelic')
+
 const slack = require('slack')
 const _ = require('lodash')
 const config = require('./config')
@@ -17,10 +19,6 @@ var bot = controller.spawn({
     token: config('SLACK_TOKEN')
 }).startRTM();
 
-controller.hears(['hello'], 'direct_message,ambient', function(bot, message) {
-  bot.reply(message, 'yesssss');
-});
-
 
 controller.hears([/[A-Z]+-[0-9]+/g], 'direct_message,ambient', function(bot, message) {
   getTicketDescription(message, 0);
@@ -29,7 +27,7 @@ controller.hears([/[A-Z]+-[0-9]+/g], 'direct_message,ambient', function(bot, mes
 function getTicketDescription(message, index) {
   var title = message.match[index];
   var options = {
-    auth: 'angel.suhardi:Msuha_1234',
+    auth: config('JIRA_USER') + ':' + config('JIRA_PASSWORD'),
     hostname: 'placed.atlassian.net',
     port: 443,
     path: '/rest/api/2/issue/' + title,

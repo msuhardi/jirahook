@@ -13,6 +13,8 @@ const config = {
   WEBHOOK_URL: process.env.WEBHOOK_URL,
   STARBOT_COMMAND_TOKEN: process.env.STARBOT_COMMAND_TOKEN,
   SLACK_TOKEN: process.env.SLACK_TOKEN,
+  JIRA_USER: process.env.JIRA_USER,
+  JIRA_PASSWORD: process.env.JIRA_PASSWORD,
   ICON_EMOJI: ':stars:'
 }
 
